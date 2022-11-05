@@ -35,6 +35,17 @@
     animation-delay: 1s;
     display: flex;
     flex-direction: column;
+    .statusButton{
+      background-color: white;
+      border-radius: 10px;
+      border: solid 2px black;
+      width: 20rem;
+      height: 3rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: black;
+      font-family: "nexon_Bold";
+    }
     .loginButton{
       background-color: white;
       border-radius: 10px;

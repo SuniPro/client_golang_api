@@ -10,6 +10,7 @@ import {dailyCheck} from "../../components/DailyChecker";
 
 const Home = () => {
 
+    const [status, setStatus] = useState({data: '', message:''})
     const [check, setCheck] = useState({message: ''});
     const [count, setCount] = useState({message: ''})
     const [reward, setReward] = useState({data:''})
@@ -19,6 +20,17 @@ const Home = () => {
     //         setstate
     //     })
     // }
+
+    const userStatus = async () => {
+        await api.get('/api/admin/user', {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(response => {
+            setStatus(response.data);
+            console.log(response.data)
+        })
+    }
 
     const dailyCheckClick = async () => {
         await api.get('/api/admin/daily_check', {
@@ -72,6 +84,11 @@ const Home = () => {
                 <div className="home-contents">
                     {isAuth ? (
                         <>
+                            <Button className={"statusButton"} variant={"warning"} onClick={userStatus}>유저정보</Button>
+                            <p className={'checkMessage'}>
+                                아이디: {status.message}<br />
+                                닉네임: {status.data}
+                            </p>
                             <Button className={"loginButton"} variant={"warning"} onClick={dailyCheckClick}>출석체크</Button>
                             <p className={'checkMessage'}>
                                 {check.message}
