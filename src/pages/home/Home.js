@@ -33,7 +33,7 @@ const Home = () => {
     }
 
     const dailyCheckClick = async () => {
-        await api.get('/api/admin/daily_check', {
+        await api.post('/api/admin/daily_check', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -55,7 +55,7 @@ const Home = () => {
     }
 
     const compensation = async () => {
-        await api.get('/api/admin/compensation', {
+        await api.post('/api/admin/compensation', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
